@@ -10,6 +10,7 @@
 		8779A1192E5C661400A5F6AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779A1172E5C661400A5F6AA /* Extensions.swift */; };
 		8779A11E2E5C664200A5F6AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8779A11B2E5C664200A5F6AA /* Assets.xcassets */; };
 		8779A11F2E5C664200A5F6AA /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779A11C2E5C664200A5F6AA /* MemorizeApp.swift */; };
+		8779A1232E5CFA9900A5F6AA /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779A1222E5CFA9900A5F6AA /* Theme.swift */; };
 		87A857832E42BBA40090B271 /* MemorizeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8577F2E42BBA40090B271 /* MemorizeView.swift */; };
 		87A8578B2E4BDC030090B271 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8578A2E4BDC030090B271 /* CardView.swift */; };
 		87A8578D2E507B170090B271 /* MemorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8578C2E507B120090B271 /* MemorizeModel.swift */; };
@@ -20,6 +21,7 @@
 		8779A1172E5C661400A5F6AA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8779A11B2E5C664200A5F6AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8779A11C2E5C664200A5F6AA /* MemorizeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeApp.swift; sourceTree = "<group>"; };
+		8779A1222E5CFA9900A5F6AA /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		879C0B332E42AFB200A70833 /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87A8577F2E42BBA40090B271 /* MemorizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizeView.swift; sourceTree = "<group>"; };
 		87A8578A2E4BDC030090B271 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		8779A1212E5CFA7900A5F6AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				87A8578C2E507B120090B271 /* MemorizeModel.swift */,
+				8779A1222E5CFA9900A5F6AA /* Theme.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		879C0B2A2E42AFB200A70833 = {
 			isa = PBXGroup;
 			children = (
@@ -78,7 +89,7 @@
 				8779A1182E5C661400A5F6AA /* Src */,
 				87A857922E51EB5F0090B271 /* View */,
 				87A8578F2E5084DF0090B271 /* MemorizeViewModel.swift */,
-				87A8578C2E507B120090B271 /* MemorizeModel.swift */,
+				8779A1212E5CFA7900A5F6AA /* Model */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -170,6 +181,7 @@
 				87A857832E42BBA40090B271 /* MemorizeView.swift in Sources */,
 				87A8578B2E4BDC030090B271 /* CardView.swift in Sources */,
 				8779A11F2E5C664200A5F6AA /* MemorizeApp.swift in Sources */,
+				8779A1232E5CFA9900A5F6AA /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

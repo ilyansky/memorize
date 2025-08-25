@@ -40,4 +40,8 @@ class MemorizeViewModel: ObservableObject {
         return model.choose(card)
     }
 
+    func startNewGame() {
+        model.startNewGame()
+    }
+
 }

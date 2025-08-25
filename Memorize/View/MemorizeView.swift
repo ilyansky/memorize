@@ -21,8 +21,11 @@ struct MemorizeView: View {
                     .animation(.default, value: viewModel.cards)
             }
 
-            Button("Shuffle") {
-                viewModel.shuffle()
+            HStack(spacing: 30) {
+                Button("Shuffle") {
+                    viewModel.shuffle()
+                }
+                newGameButton
             }
         }
         .padding()
@@ -56,6 +59,13 @@ struct MemorizeView: View {
                         viewModel.choose(card)
                     }
             }
+        }
+    }
+
+    var newGameButton: some View {
+
+        Button("New game") {
+            viewModel.startNewGame()
         }
     }
 

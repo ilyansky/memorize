@@ -28,6 +28,8 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: "\(pairIndex + 1)a"))
             cards.append(Card(content: content, id: "\(pairIndex + 1)b"))
         }
+
+        shuffle()
     }
 
     mutating func shuffle() {
@@ -52,6 +54,16 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
 
         }
 
+    }
+
+    mutating func startNewGame() {
+
+        cards.indices.forEach { index in
+            cards[index].isFaceUp = false
+            cards[index].isMatched = false
+        }
+        faceUpCardIndex = nil
+        shuffle()
     }
 
     struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
