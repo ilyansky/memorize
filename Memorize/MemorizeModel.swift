@@ -12,8 +12,12 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card] = [] // get-only
 
     var faceUpCardIndex: Int? {
+
+        // возвращаем единственную перевернутую карту или nil
         get { cards.indices.filter { cards[$0].isFaceUp }.only }
-        set { cards.indices.forEach { cards[$0].isFaceUp = $0 == newValue } }
+
+        // переворачиваем все карты лицом вниз
+        set { cards.indices.forEach { cards[$0].isFaceUp = false } }
     }
 
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
@@ -31,14 +35,13 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
     }
 
     mutating func choose(_ card: Card) {
-        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) {
-            if !cards[chosenIndex].isFaceUp && !cards[chosenIndex].isMatched {
+        if !card.isFaceUp && !card.isMatched {
+            if let chosenIndex = cards.firstIndex(where: { $0.id == card.id } ) {
 
                 if let potentialMatchIndex = faceUpCardIndex {
-
                     if cards[potentialMatchIndex].content == cards[chosenIndex].content {
-                        cards[chosenIndex].isMatched = true
                         cards[potentialMatchIndex].isMatched = true
+                        cards[chosenIndex].isMatched = true
                     }
                 } else {
                     faceUpCardIndex = chosenIndex
@@ -46,7 +49,9 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
 
                 cards[chosenIndex].isFaceUp = true
             }
+
         }
+
     }
 
     struct Card: Equatable, Identifiable, CustomDebugStringConvertible {

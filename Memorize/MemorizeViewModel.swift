@@ -41,11 +41,3 @@ class MemorizeViewModel: ObservableObject {
     }
 
 }
-
-extension Collection {
-
-    subscript(safe: Index) -> Element? {
-        return indices.contains(safe) ? self[safe] : nil
-    }
-
-}
