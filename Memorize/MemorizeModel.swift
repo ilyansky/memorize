@@ -11,6 +11,11 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
 
     private(set) var cards: [Card] = [] // get-only
 
+    var faceUpCardIndex: Int? {
+        get { cards.indices.filter { cards[$0].isFaceUp }.only }
+        set { cards.indices.forEach { cards[$0].isFaceUp = $0 == newValue } }
+    }
+
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent) {
 
         for pairIndex in 0..<max(2, numberOfPairsOfCards) {
@@ -26,30 +31,33 @@ struct MemorizeModel<CardContent> where CardContent: Equatable {
     }
 
     mutating func choose(_ card: Card) {
-        cards[index(of: card)].isFaceUp.toggle()
-        print(card.debugDescription)
-    }
+        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }) {
+            if !cards[chosenIndex].isFaceUp && !cards[chosenIndex].isMatched {
 
-    private func index(of card: Card) -> Int {
+                if let potentialMatchIndex = faceUpCardIndex {
 
-        for index in cards.indices {
-            if cards[index].id == card.id {
-                return index
+                    if cards[potentialMatchIndex].content == cards[chosenIndex].content {
+                        cards[chosenIndex].isMatched = true
+                        cards[potentialMatchIndex].isMatched = true
+                    }
+                } else {
+                    faceUpCardIndex = chosenIndex
+                }
+
+                cards[chosenIndex].isFaceUp = true
             }
         }
-
-        return 0
     }
 
     struct Card: Equatable, Identifiable, CustomDebugStringConvertible {
 
-        var isFaceUp = true
+        var isFaceUp = false
         var isMatched = false
         let content: CardContent
 
         var id: String
         var debugDescription: String {
-            "\(id): \(content), \(isFaceUp ? "up" : "down"), \(isMatched ? "matched" : "")"
+            "\(id): \(isMatched ? "matched" : "not matched")"
         }
     }
 }
